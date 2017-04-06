@@ -10,7 +10,11 @@ class Message:
     time_to_send = ""
     message_status = ""
 
-    def __init__(self, id_message, platform, sender, to_m, subject,  content, time_to_send, message_status):
+    def __init__(self,
+                 id_message, platform, sender,
+                 to_m, subject,content, time_to_send,
+                  message_status):
+        
         self.id_message = id_message
         self.platform = platform
         self.subject = subject
