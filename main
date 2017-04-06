@@ -2,20 +2,31 @@
 import database
 import message
 import Queue as Q
+import time
+import datetime
 
 
 def main():
 
+    #  List fo messages that have a NS status.
     not_sent = database.to_be_send_messages("G")
-    message_list = Q.PriorityQueue()
 
+    #  Adding it to a Priority Queue for Processing
+    message_list = Q.PriorityQueue()
     for message in not_sent:
         message_list.put(message)
 
 
-    while not q.empty():
-        message = q.get()
-        print message.time_to_send
+    now = datetime.datetime.now()
+    #Missing logic that calls the send_email method.
+    #Making actual time comparable with our dates
+    cc = time.strptime(str(now.year) + str(now.month) + str(now.day) + str(now.hour) + str(now.minute),'%Y%m%d%H%M')
+    aa = message_list.get()
+    print aa.time_to_send < cc
+
+
+
+
 
 if __name__ == '__main__':
     main()
