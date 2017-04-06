@@ -17,7 +17,7 @@ def to_be_send_messages(ptform):
 
     _messages_ = []  #  List that the method returns
 
-    db = MySQLdb.connect("127.0.0.1","root","textlater*123","TextLater")
+    db = MySQLdb.connect("","","","")
                         #  server, user, password, database
     cursor = db.cursor()
 
