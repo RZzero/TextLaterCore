@@ -6,13 +6,13 @@ from email.MIMEText import MIMEText
 from message import Message
 
 
-def send_email_gmail(user_mail, user_pass, to_, subject_, content_):
+def send_email_gmail(user_mail, user_pass, message):
     msg = MIMEMultipart()
-    msg['From'] = user_mail
-    to_str = ", ".join(to_) #Preparing string of emails
+    msg['From'] = message.sender
+    to_str = ", ".join(message.to_m) #Preparing string of emails
     msg['To'] = to_str
-    msg['Subject'] = subject_
-    msg_body = content_
+    msg['Subject'] = message.subject
+    msg_body = message.content
     msg.attach(MIMEText(msg_body, 'plain'))
 
     try:
@@ -21,11 +21,11 @@ def send_email_gmail(user_mail, user_pass, to_, subject_, content_):
 
         msg_to_be_send = msg.as_string()
 
-        server.sendmail(user_mail, to_, msg_to_be_send)
+        server.sendmail(message.sender, message.to_m, msg_to_be_send)
         server.quit()
     except Exception:
         print("Unable to send message")
 
-if __name__ == "__main__":
-    emails = [""]
-    send_email("", "", emails, "", "")
+# if __name__ == "__main__":
+#     emails = [""]
+#     send_email("", "", emails, "", "")

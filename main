@@ -1,1 +1,21 @@
 #!/usr/bin/python
+import database
+import message
+import Queue as Q
+
+
+def main():
+
+    not_sent = database.to_be_send_messages("G")
+    message_list = Q.PriorityQueue()
+
+    for message in not_sent:
+        message_list.put(message)
+
+
+    while not q.empty():
+        message = q.get()
+        print message.time_to_send
+
+if __name__ == '__main__':
+    main()

@@ -14,7 +14,7 @@ class Message:
                  id_message, platform, sender,
                  to_m, subject,content, time_to_send,
                   message_status):
-        
+
         self.id_message = id_message
         self.platform = platform
         self.subject = subject
@@ -23,6 +23,10 @@ class Message:
         self.content = content
         self.time_to_send = time_to_send
         self.message_status = message_status
+
+    def __cmp__(self, other):
+        return cmp(self.time_to_send, other.time_to_send)
+
 
     def to_string(self):
         return "{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}".format(self.id_message, self.platform, self.subject, self.sender, self.to_m, self.content, self.time_to_send, self.message_status)
