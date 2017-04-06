@@ -15,6 +15,7 @@ def to_be_send_messages(ptform):
     _messages_ = []  #  List that the method returns
 
     db = MySQLdb.connect("","","","")
+                        #  server, user, password, database
     cursor = db.cursor()
 
     query = "SELECT idMessage, platform, sender, ToM,subject, content, timeToSend, messageStatus FROM Message WHERE messageStatus = {0} AND platform = '{1}'".format("'NS'", ptform)

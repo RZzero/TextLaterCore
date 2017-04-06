@@ -25,3 +25,7 @@ def send_email_gmail(user_mail, user_pass, to_, subject_, content_):
         server.quit()
     except Exception:
         print("Unable to send message")
+
+if __name__ == "__main__":
+    emails = [""]
+    send_email("", "", emails, "", "")
