@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+
+class Message:
+    
+    def __init__(id_message, platform, subject, sender, to_m, content, time_to_send, message_status):
+        self.id_message = id_message
+        self.platform = platform
+        self.subject = subject
+        self.sender = sender
+        self.to_m = to_m
+        self.content = content
+        self.time_to_send = time_to_send
+        self.message_status = message_status
+
+
+a = Message("1", "G", "Papa", "rafaelsuazoh@gmail.com", "chacha@gmail.com", "PERO PAPAAAA", "12:20 121212", "MS")
+print(a.id_message)
