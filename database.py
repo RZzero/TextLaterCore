@@ -13,15 +13,11 @@ from message import Message
 
 #  TODO: Implementation
 
-
-def update_message(message_id, ptform):
-
-
 def to_be_send_messages(ptform):
 
     _messages_ = []  #  List that the method returns
 
-    db = MySQLdb.connect("","","","")
+    db = MySQLdb.connect("127.0.0.1","root","textlater*123","TextLater")
                         #  server, user, password, database
     cursor = db.cursor()
 
@@ -34,7 +30,7 @@ def to_be_send_messages(ptform):
         id_message = m[0]
         platform = m[1]
         sender = m[2]
-        to_m = m[3].split(", ")
+        to_m = m[3].split(",")
         subject = m[4]
         content = m[5]
         time_to_send = m[6]
