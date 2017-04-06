@@ -10,6 +10,13 @@ from message import Message
         a list of messages with status NS (Not Send) from our database.
 '''
 
+
+#  TODO: Implementation
+
+
+def update_message(message_id, ptform):
+
+
 def to_be_send_messages(ptform):
 
     _messages_ = []  #  List that the method returns

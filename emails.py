@@ -1,11 +1,13 @@
 #!/usr/bin/python
+
+
 #For now we're limited to send emails without attachments.
 import smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from message import Message
 
-
+                    #  message refers to a message object
 def send_email_gmail(user_mail, user_pass, message):
     msg = MIMEMultipart()
     msg['From'] = message.sender
@@ -25,7 +27,3 @@ def send_email_gmail(user_mail, user_pass, message):
         server.quit()
     except Exception:
         print("Unable to send message")
-
-# if __name__ == "__main__":
-#     emails = [""]
-#     send_email("", "", emails, "", "")

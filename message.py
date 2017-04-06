@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+import time
+
 class Message:
     id_message = ""
     platform = ""
@@ -21,7 +23,7 @@ class Message:
         self.sender = sender
         self.to_m = to_m
         self.content = content
-        self.time_to_send = time_to_send
+        self.time_to_send = time.strptime(time_to_send,'%Y-%m-%d %H:%M')
         self.message_status = message_status
 
     def __cmp__(self, other):
