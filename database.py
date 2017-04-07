@@ -12,6 +12,17 @@ from message import Message
 
 
 #  TODO: Implementation
+def update_message(id_message):
+    db = MySQLdb.connect("","","","")
+                        #  server, user, password, database
+    cursor = db.cursor()
+
+    query = "UPDATE Message SET messageStatus = {0} WHERE idMessage = {1}".format("'S'", id_message)
+    print query
+
+    cursor.execute(query)
+    db.commit()
+    db.close()
 
 def to_be_send_messages(ptform):
 
