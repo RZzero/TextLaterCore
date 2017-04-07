@@ -4,28 +4,37 @@ import message
 import Queue as Q
 import time
 import datetime
-
+import emails
 
 def main():
 
-    #  List fo messages that have a NS status.
-    not_sent = database.to_be_send_messages("G")
+    while True:
+        #  List fo messages that have a NS status.
+        not_sent = database.to_be_send_messages("G")
 
-    #  Adding it to a Priority Queue for Processing
-    message_list = Q.PriorityQueue()
-    for message in not_sent:
-        message_list.put(message)
+        #  Adding it to a Priority Queue for Processing
+        message_list = Q.PriorityQueue()
+        for message in not_sent:
+            message_list.put(message)
 
+        #  Getting computer time
+        #  Making actual time comparable with our dates
 
-    now = datetime.datetime.now()
-    #Missing logic that calls the send_email method.
-    #Making actual time comparable with our dates
-    cc = time.strptime(str(now.year) + str(now.month) + str(now.day) + str(now.hour) + str(now.minute),'%Y%m%d%H%M')
-    aa = message_list.get()
-    print aa.time_to_send < cc
+        now = datetime.datetime.now()
+        now_time = time.strptime(str(now.year) + str(now.month) + str(now.day) + str(now.hour) + str(now.minute),'%Y%m%d%H%M')
 
+        if not message_list.empty():
 
+            #  Top message that needs to be send
+            to_eval = message_list.get()
 
+            if to_eval.time_to_send <= now_time :
+                emails.send_email_gmail("", "", to_eval)
+                database.update_message(to_eval.id_message)
+        else:
+            print("There are no messages that needing my help :'( ")
+
+        time.sleep(10)
 
 
 if __name__ == '__main__':
