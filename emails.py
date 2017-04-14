@@ -3,6 +3,7 @@
 
 #For now we're limited to send emails without attachments.
 import smtplib
+import filess
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.mime.application import MIMEApplication
@@ -10,7 +11,7 @@ from os.path import basename
 from message import Message
 
                     #  message refers to a message object
-def send_email_gmail(user_mail, user_pass, message, files):
+def send_email_gmail(user_mail, user_pass, message):
     msg = MIMEMultipart()
     msg['From'] = message.sender
     to_str = ", ".join(message.to_m) #Preparing string of emails
@@ -19,8 +20,9 @@ def send_email_gmail(user_mail, user_pass, message, files):
     msg_body = message.content
     msg.attach(MIMEText(msg_body, 'plain'))
 
-    if len(files) > 0:
-        for f in files:
+    files_ = filess.messages_with_id(message.id_message)
+    if len(files_) > 0:
+        for f in files_:
             with open(f, "r") as fil:
                 part = MIMEApplication(
                     fil.read(),
