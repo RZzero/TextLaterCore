@@ -10,7 +10,7 @@ from os.path import basename
 from message import Message
 
                     #  message refers to a message object
-def send_email_gmail(user_mail, user_pass, message):
+def send_email_gmail(user_mail, user_pass, message, files):
     msg = MIMEMultipart()
     msg['From'] = message.sender
     to_str = ", ".join(message.to_m) #Preparing string of emails
@@ -19,7 +19,6 @@ def send_email_gmail(user_mail, user_pass, message):
     msg_body = message.content
     msg.attach(MIMEText(msg_body, 'plain'))
 
-    files = [""]
     if len(files) > 0:
         for f in files:
             with open(f, "r") as fil:
