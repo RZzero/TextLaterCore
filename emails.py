@@ -20,7 +20,7 @@ def send_email_gmail(user_mail, user_pass, message):
     msg_body = message.content
     msg.attach(MIMEText(msg_body, 'plain'))
 
-    files_ = filess.messages_with_id(message.id_message)
+    files_ = filess.messages_with_id(str(message.id_message))
     if len(files_) > 0:
         for f in files_:
             with open(f, "r") as fil:
